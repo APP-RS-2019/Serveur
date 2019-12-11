@@ -10,6 +10,7 @@ public class ClientSocket {
 	private BufferedInputStream bis;
 	private BufferedReader inFromServer;
 	private DataOutputStream outToServer;
+	private byte[] b;
 	public boolean open;
 
 	public ClientSocket(String ip, int port, String name) throws Exception {
@@ -18,6 +19,7 @@ public class ClientSocket {
 		this.bos = new BufferedOutputStream(soc.getOutputStream());
 		this.inFromServer = new BufferedReader(new InputStreamReader(this.soc.getInputStream()));
 		this.outToServer = new DataOutputStream(soc.getOutputStream());
+		this.b=b;
 		this.connect(name);
 	}
 
@@ -26,9 +28,9 @@ public class ClientSocket {
 		try {
 			this.sentence = inFromServer.readLine();
 			byte[] b = name.getBytes();
-			outToServer.write(b,0,name.length()); 
+			outToServer.write(b,0,name.length()); 		//utiliser writeBytes
 			outToServer.flush();
-			this.sentence = inFromServer.readLine();
+			this.sentence = inFromServer.readLine();	
 			System.err.println(sentence);
 			this.open=true;
 		} catch (IOException e) {
@@ -39,19 +41,19 @@ public class ClientSocket {
 	
 	public void close() throws Exception{
 		String fin ="";
-		byte[] b = fin.getBytes();
-		outToServer.write(b,0,fin.length()); 
+		b = fin.getBytes();
+		outToServer.write(b,0,fin.length()); 	//utiliser writeBytes
 		outToServer.flush();
 		
 		this.sentence = inFromServer.readLine();
 		fin="fin";
 		b = fin.getBytes();
-		outToServer.write(b,0,fin.length()); 
+		outToServer.write(b,0,fin.length()); 	//utiliser writeBytes
 		outToServer.flush();
 		
 		this.sentence = inFromServer.readLine();
 		b = fin.getBytes();
-		outToServer.write(b,0,fin.length()); 
+		outToServer.write(b,0,fin.length()); 	//utiliser writeBytes
 		outToServer.flush();
 		
 		this.sentence = inFromServer.readLine();
@@ -60,15 +62,20 @@ public class ClientSocket {
 	}
 	
 	
-	public void send (String sentence){
-		DataOutputStream outToServer;
+	public void send (String destRobot, String order){
 		try {
-			outToServer = new DataOutputStream(soc.getOutputStream());
-			outToServer.writeBytes(sentence + '\n');
+			b =destRobot.getBytes();
+			this.sentence = inFromServer.readLine();
+			outToServer.write(b,0,destRobot.length());
+			outToServer.flush();
+			
+			b=order.getBytes();
+			this.sentence = inFromServer.readLine();
+			outToServer.write(b,0,order.length());
+			outToServer.flush();
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 }
