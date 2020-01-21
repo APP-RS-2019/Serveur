@@ -14,6 +14,7 @@ public class ClientSocket {
 	public boolean open;
 
 	public ClientSocket(String ip, int port, String name) throws Exception {
+		//Ip du serveur ; port de communication ; nom du client 
 		this.soc=new Socket(ip,port);
 		this.bis = new BufferedInputStream(soc.getInputStream());
 		this.bos = new BufferedOutputStream(soc.getOutputStream());
