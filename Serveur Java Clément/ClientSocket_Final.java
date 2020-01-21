@@ -24,7 +24,7 @@ public class ClientSocket {
 	}
 
 
-	public void connect(String name){
+	private void connect(String name){
 		try {
 			this.sentence = inFromServer.readLine();
 			byte[] b = name.getBytes();
