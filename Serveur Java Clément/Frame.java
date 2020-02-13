@@ -13,7 +13,7 @@ public class Frame extends JFrame{
 	public Thread_recep recept;
 	public String sentence;
 
-	public Frame(ClientSocket serveur){//, Thread_recep thrd){
+	public Frame(ClientSocket serveur){
 		super("Test Serveur");
 		try{
 			this.ouverture=true;
@@ -21,7 +21,6 @@ public class Frame extends JFrame{
 			this.setResizable(false);
 			this.setLayout(new GridLayout(6,1));
 			this.serveur = serveur;
-			//this.recept = thrd;
 			
 			//initialisation des composants
 			JRadioButton pepper = new JRadioButton("Pepper");
@@ -63,28 +62,12 @@ public class Frame extends JFrame{
 					else if (pekee.isSelected()){
 						serveur.sendOrder("Pekee",message.getText());
 					}
-					//System.out.println("drgd");System.out.flush();
-					//serveur.reciev();
 
 					message.setText("");
 				} 
 			});
-//			JButton ecouter = new JButton("ecouter");
-//			this.add(ecouter);
-//			ecouter.addActionListener(new ActionListener(){
-//
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					ouverture=true;
-//				}
-//				
-//			});
+
 			setVisible(true);
-//			while (ouverture){
-//				System.out.println("ok");
-//				bo = serveur.reciev();
-//				System.out.println(bo);
-//			}
 			
 		}
 		catch (Exception e){}
