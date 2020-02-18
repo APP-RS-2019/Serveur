@@ -12,7 +12,7 @@ public class ClientSocket {
 	private BufferedReader inFromServer;
 	private DataOutputStream outToServer;
 	private byte[] b;
-	public boolean open;
+	private  boolean open;
 	private OutputStream outStramToServer;
 
 	public ClientSocket(String ip, int port, String name) throws Exception {
@@ -122,4 +122,6 @@ public class ClientSocket {
 			return "error";
 		}
 	}
+	public boolean getOpen(){
+		return this.open;
 }
