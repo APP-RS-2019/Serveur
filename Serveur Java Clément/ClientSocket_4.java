@@ -45,38 +45,7 @@ public class ClientSocket {
 		this.open=false;
 	}
 	
-	
-//	public void dialog (String destRobot, String order){
-//		try {
-//			
-//			System.out.println(this.reciev());
-//			
-//			/*b =destRobot.getBytes();
-//			//this.sentence = inFromServer.readLine();
-//			outToServer.write(b,0,destRobot.length());
-//			this.outStramToServer.flush();
-//			outToServer.flush();*/
-//
-//			System.out.println("order: "+destRobot);
-//			this.send(destRobot);
-//			
-//			System.out.println(this.reciev());
-//			
-//			/*b=order.getBytes();
-//			this.sentence = inFromServer.readLine();
-//			outToServer.write(b,0,order.length());
-//			this.outStramToServer.flush();
-//			outToServer.flush();*/
-//			
-//			System.out.println("order: "+order);
-//			this.send(order);
-//			
-//			System.out.println(this.reciev());
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+
 	
 	public void sendOrder (String destRobot, String order){
 		String jsonOrder = this.formatJson(destRobot, order);
