@@ -93,4 +93,5 @@ public class ClientSocket {
 	}
 	public boolean getOpen(){
 		return this.open;
+	}
 }
