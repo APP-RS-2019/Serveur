@@ -29,7 +29,7 @@ public class ClientSocket {
 	}
 
 
-	private void connect(String name){
+	public void connect(String name){
 		try {
 			this.soc = new Socket(this.ip, this.port); 
 			
