@@ -50,9 +50,10 @@ class Msgenvoyer(Thread):
 #        client.send(msg)
         global test
         while test:
-            time.sleep(10)
-    
-            x={"robot":[{"name":"AppliTest","order" : "coucoufromPepper"}]}
+            time.sleep(1)
+            dest=input("destinataire?")
+            ordre =input("ordre?")
+            x={"robot":[{"name":dest,"order":ordre}]}
     
             y=json.dumps(x)
             try:
